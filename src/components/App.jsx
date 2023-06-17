@@ -7,6 +7,8 @@ import { fetchContacts } from 'redux/operations';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getIsLoading, getError } from 'redux/selectors';
+import {LineWave} from  'react-loader-spinner'
+
 
 export default function App() {
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ export default function App() {
       <PhonebookForm />
       <h2>Contacts</h2>
       <Filter />
-      {isLoading && <b>Loading contacts...</b>}
+      {isLoading && <LineWave color="blue"/>}
       {error && <b>{error}</b>}
       <Contacts />
       <ToastContainer autoClose={2000} />

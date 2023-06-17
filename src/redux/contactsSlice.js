@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   fetchContacts,
   addContact,
@@ -74,7 +74,8 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, handleRejected)
       .addCase(editContact.pending, handlePending)
       .addCase(editContact.fulfilled, handleFulfilledEditContact)
-      .addCase(editContact.rejected, handleRejected);
+      .addCase(editContact.rejected, handleRejected)
+      // .addMatcher(isAnyOf([fetchContacts.pending, addContact.pending, deleteContact.pending, editContact.pending]), handlePending);
   },
 });
 
