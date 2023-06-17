@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import css from './PhonebookForm.module.css';
 // import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/api';
+import { addContact } from 'redux/operations';
 
 export default function PhonebookForm() {
   const dispatch = useDispatch();
@@ -45,8 +45,8 @@ export default function PhonebookForm() {
         type="text"
         name="name"
         className={css.formInput}
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        // pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
+        // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
         value={name}
         onChange={handleChange}
@@ -57,7 +57,7 @@ export default function PhonebookForm() {
         type="tel"
         name="number"
         className={css.formInput}
-        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
         value={number}

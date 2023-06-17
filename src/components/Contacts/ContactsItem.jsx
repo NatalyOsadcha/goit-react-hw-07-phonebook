@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import css from './ContactsItem.module.css';
 import TextField from '@mui/material/TextField';
 import { useDispatch } from 'react-redux';
-import { deleteContact, editContact} from 'redux/api';
+import { deleteContact, editContact} from 'redux/operations';
 import { ImBin, ImPencil } from "react-icons/im";
 import { FaSave } from "react-icons/fa";
 
@@ -29,12 +29,12 @@ const ContactsItem = ({ contact }) => {
             id="standard-basic"
             label="name"
             variant="standard"
-            inputProps={{
-              pattern:
-                "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
-              title:
-                "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
-            }}
+            // inputProps={{
+            //   pattern:
+            //     "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+            //   title:
+            //     "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
+            // }}
             required
             name="name"
             value={name}
@@ -42,7 +42,7 @@ const ContactsItem = ({ contact }) => {
           />
           <TextField
             // inputProps={{
-            //   pattern:"\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}",
+            //   pattern:"\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}",
             //   title:
             //     'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
             // }}

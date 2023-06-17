@@ -2,11 +2,11 @@ import React from 'react';
 import css from './Contacts.module.css';
 import ContactsItem from './ContactsItem';
 import {useSelector } from 'react-redux';
-import { getItems, filterSelector } from 'redux/selectors';
+import {filterSelector, sortContacts } from 'redux/selectors';
 
 const Contacts = () => {
   const filterValue = useSelector(filterSelector);
-  const items = useSelector(getItems);
+  const items = useSelector(sortContacts);
  
 
   const getFilteredContacts = () => {

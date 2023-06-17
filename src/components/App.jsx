@@ -3,7 +3,7 @@ import PhonebookForm from './PhonebookForm/PhonebookForm';
 import Contacts from './Contacts/Contacts';
 import Filter from './Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/api';
+import { fetchContacts } from 'redux/operations';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getIsLoading, getError } from 'redux/selectors';
