@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { deleteContact, editContact} from 'redux/operations';
 import { ImBin, ImPencil } from "react-icons/im";
 import { FaSave } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
 
 const ContactsItem = ({ contact }) => {
@@ -18,6 +19,7 @@ const ContactsItem = ({ contact }) => {
     setIsEdit(prevState => !prevState);
     if (isEdit) {
       dispatch(editContact({ name, number, id: contact.id }));
+      toast.success(`Contact ${name} was updated successfully.`);
     }
   };
 
@@ -67,7 +69,7 @@ const ContactsItem = ({ contact }) => {
       <button
         type="button"
         className={css.contactsBtn}
-        onClick={() => dispatch(deleteContact(contact.id))}
+        onClick={() => dispatch(deleteContact(contact.id)) && toast.success(`Contact ${name} was deleted successfully.`)}
       >
          <ImBin size={13} />
       </button>

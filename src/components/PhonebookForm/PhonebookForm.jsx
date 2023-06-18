@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import css from './PhonebookForm.module.css';
-// import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
+import { getItems } from 'redux/selectors';
 
 export default function PhonebookForm() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getItems)
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -28,11 +30,16 @@ export default function PhonebookForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // const contact = {
-    //   // id: nanoid(5),
-    //   name,
-    //   number,
-    // };
+    if (
+    contacts.some(
+      contact =>
+        contact.name.toLowerCase().trim() === name.toLowerCase().trim()
+    )
+  ) {
+    toast.error(`${name} is already in the contacts.`);
+    return;
+  }
+    toast.success(`${name} was added to the contacts successfully.`);
     dispatch(addContact({name, number}));
     setName('');
     setNumber('');
